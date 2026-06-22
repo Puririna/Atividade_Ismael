@@ -1,4 +1,7 @@
-arrega uma imagem, identifica automaticamente os rostos presentes utilizando um classificador pré-treinado e destaca as regiões detectadas com retângulos.
+
+📝 Descrição do Projeto/Atividade
+
+Desenvolvimento de uma aplicação simples de visão computacional utilizando Python e OpenCV para detectar rostos em imagens. O sistema carrega uma imagem, identifica automaticamente os rostos presentes utilizando um classificador pré-treinado e destaca as regiões detectadas com retângulos.
 
 
 ---
