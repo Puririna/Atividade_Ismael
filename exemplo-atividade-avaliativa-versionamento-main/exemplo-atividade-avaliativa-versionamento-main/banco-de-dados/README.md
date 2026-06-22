@@ -1,45 +1,65 @@
 # 🗄️ Banco de Dados
 
 ## 📝 Descrição do Projeto/Atividade
-[Descreva brevemente o projeto prático que você escolheu colocar aqui. Ex: "Criação do esquema de banco de dados relacional para um sistema de biblioteca escolar, incluindo modelagem entidade-relacionamento (DER), tabelas de relacionamento e consultas SQL com junções."]
+Criação de um banco de dados simples para armazenar informações sobre filmes, contendo atributos como título, gênero, ano de lançamento, nota de avaliação e duração. Também foram realizadas consultas SQL para ordenar e exibir os filmes com melhores avaliações.
 
 ---
 
 ## 🧠 Reflexão de Aprendizado
 
 ### 1. O que aprendi?
-[Substitua este texto por sua resposta. Explique em suas palavras os conceitos de banco de dados que você aprendeu com esta atividade, tais como: modelagem relacional, chaves primárias (PK) e estrangeiras (FK), integridade referencial, comandos DDL (CREATE, ALTER) e DML (SELECT, INSERT, UPDATE, DELETE), agrupamentos e junções (JOINs).]
+Aprendi a criar tabelas utilizando comandos DDL, definir uma chave primária para identificar cada registro de forma única e inserir dados por meio do comando INSERT. Também utilizei consultas com SELECT, ordenação com ORDER BY e limitação de resultados com LIMIT, permitindo recuperar informações específicas do banco de dados de maneira eficiente.
 
 ### 2. Para que serve (Por que aprendi)?
-[Substitua este texto por sua resposta. Explique por que a persistência e a estruturação de dados são essenciais para aplicações de software. Qual o valor de saber projetar um banco de dados otimizado e realizar consultas eficientes?]
+Os bancos de dados são essenciais para armazenar, organizar e consultar informações utilizadas por sistemas e aplicações. Saber projetar tabelas corretamente e realizar consultas eficientes melhora o desempenho do software, facilita a manutenção dos dados e permite que informações sejam encontradas rapidamente, mesmo em grandes volumes de registros.
 
 ---
 
 ## 🛠️ Tecnologias e Ferramentas Utilizadas
-*   [SGBD Utilizado, ex: MySQL, PostgreSQL, SQLite, SQL Server]
-*   [Ferramenta de Modelagem, ex: brModelo, dbdiagram.io, draw.io]
-*   DBeaver ou cliente SQL similar
+MySQL
+SQL
+DBeaver (ou outro cliente SQL utilizado)
+VS Code (opcional)
+
 
 ---
 
 ## 💻 Demonstração e Como Rodar
 
-### Código/Script SQL Relevante Comentado
-[Insira aqui um trecho de código SQL que demonstre consultas complexas (utilizando JOIN, GROUP BY ou subqueries) ou a criação do esquema físico, comentando as principais partes. Exemplo:]
-```sql
--- Exemplo de query SQL (substitua pela sua):
-SELECT 
-    alunos.nome AS nome_aluno,
-    livros.titulo AS titulo_livro,
-    emprestimos.data_emprestimo
-FROM emprestimos
-INNER JOIN alunos ON emprestimos.id_aluno = alunos.id
-INNER JOIN livros ON emprestimos.id_livro = livros.id
-WHERE emprestimos.status = 'pendente'
-ORDER BY emprestimos.data_emprestimo ASC;
-```
+Código/Script SQL Relevante Comentado
+
+-- Criação da tabela de filmes
+CREATE TABLE filmes (
+    id INT PRIMARY KEY,
+    titulo VARCHAR(100),
+    genero VARCHAR(50),
+    ano INT,
+    nota DECIMAL(3,1),
+    duracao INT
+);
+
+-- Inserção dos registros
+INSERT INTO filmes VALUES
+(1, 'Interestelar', 'Ficção', 2014, 9.5, 169),
+(2, 'Batman', 'Ação', 2022, 8.7, 176),
+(3, 'Avatar', 'Ficção', 2009, 8.0, 162),
+(4, 'Toy Story', 'Animação', 1995, 8.9, 81),
+(5, 'Vingadores', 'Ação', 2019, 9.2, 181),
+(6, 'Shrek', 'Comédia', 2001, 8.5, 90),
+(7, 'Titanic', 'Romance', 1997, 9.0, 194),
+(8, 'Coringa', 'Drama', 2019, 8.8, 122),
+(9, 'Matrix', 'Ficção', 1999, 9.3, 136),
+(10, 'Up', 'Animação', 2009, 8.4, 96);
+
+-- Consulta para exibir os 5 filmes com maiores notas
+SELECT *
+FROM filmes
+ORDER BY nota DESC
+LIMIT 5;
 
 ### Instruções para Executar
-1. Copie o script DDL (como `schema.sql`) e execute em seu SGBD de preferência para gerar a estrutura de tabelas.
-2. Execute o script de população de dados (como `seed.sql`) para inserir os registros de teste.
-3. Utilize as queries documentadas no arquivo para realizar as consultas e verificar os resultados.
+1. Abra seu SGBD (MySQL, DBeaver ou similar).
+2. Copie e execute o comando CREATE TABLE.
+3. Execute o comando INSERT INTO para inserir os dados.
+4. Execute a consulta SELECT para visualizar os cinco filmes mais bem avaliados.
+5. Verifique os resultados retornados pelo banco de dados.
