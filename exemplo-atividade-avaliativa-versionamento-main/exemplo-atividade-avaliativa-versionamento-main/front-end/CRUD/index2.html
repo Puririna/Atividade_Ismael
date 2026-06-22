@@ -1,0 +1,106 @@
+<link rel="stylesheet" href="styles.css">
+<body>
+<h1>🚀 Servidor Node.js funcionando!</h1>
+<button onclick="clicou()">Clique aqui</button>
+<br><br>
+<a href="/sobre">Ir para a página Sobre</a>
+<script>
+function clicou() {
+alert("Funcionou!");
+}
+</script>
+<hr>
+<h2>Salvar nome</h2>
+
+<input type="text" id="nome" placeholder="Digite seu nome">
+<button onclick="salvar()">Salvar</button>
+<br><br>
+<button onclick="toggleLista()">👁️ Mostrar / Ocultar Lista</button>
+<div id="containerLista">
+<h3>Pesquisar:</h3>
+<input type="text" id="busca" oninput="filtrar()"
+placeholder="Buscar nome...">
+<h3>Lista:</h3>
+<ul id="lista"></ul>
+</div>
+<script>
+let dadosGlobais = [];
+// SALVAR
+function salvar() {
+const input = document.getElementById('nome');
+const nome = input.value;
+fetch('/dados', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ nome })
+})
+.then(() => {
+input.value = ''; // ✅ limpa input
+carregarDados();
+});
+}
+// CARREGAR
+function carregarDados() {
+fetch('/dados')
+.then(res => res.json())
+.then(dados => {
+dadosGlobais = dados;
+renderizar(dados);
+});
+
+}
+// MOSTRAR / OCULTAR
+function toggleLista() {
+const div = document.getElementById('containerLista');
+div.style.display = div.style.display === 'none' ? 'block' : 'none';
+}
+//RENDERIZAR
+function renderizar(dados) {
+const lista = document.getElementById('lista');
+lista.innerHTML = '';
+dados.forEach((item, index) => {
+const li = document.createElement('li');
+li.innerHTML = `
+${item.nome}
+<button onclick="editar(${index})">✏️</button>
+<button onclick="deletar(${index})">🗑️</button>
+`;
+lista.appendChild(li);
+});
+}
+// FILTRAR
+function filtrar() {
+const termo =
+document.getElementById('busca').value.toLowerCase();
+const filtrados = dadosGlobais.filter(item =>
+item.nome.toLowerCase().includes(termo)
+);
+renderizar(filtrados);
+}
+// EDITAR
+function editar(index) {
+const novoNome = prompt("Digite o novo nome:");
+if (!novoNome) return;
+
+fetch('/dados', {
+method: 'PUT',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ index, nome: novoNome })
+})
+.then(() => carregarDados());
+}
+//DELETAR
+function deletar(index) {
+if (!confirm('Deseja realmente excluir?')) return;
+fetch('/dados', {
+method: 'DELETE',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ index })
+})
+.then(() => carregarDados());
+}
+// INIT
+carregarDados();
+</script>
+</body>
+</html>

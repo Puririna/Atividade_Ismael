@@ -1,0 +1,111 @@
+/* ===== RESET BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== TÍTULOS ===== */
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  text-align: center;
+}
+
+h2, h3 {
+  margin: 15px 0;
+}
+
+/* ===== BOTÕES ===== */
+button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #2563eb;
+  transform: scale(1.05);
+}
+
+/* Botão de deletar (vermelho) */
+button:nth-child(2) {
+  background: #ef4444;
+}
+
+button:nth-child(2):hover {
+  background: #dc2626;
+}
+
+/* ===== INPUTS ===== */
+input[type="text"] {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  width: 250px;
+  margin: 5px 0;
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #38bdf8;
+  text-decoration: none;
+  margin: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== CONTAINER DA LISTA ===== */
+#containerLista {
+  display: none;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* ===== LISTA ===== */
+ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+li {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== EFEITO GERAL ===== */
+hr {
+  width: 80%;
+  margin: 20px 0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
