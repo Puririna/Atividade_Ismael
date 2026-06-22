@@ -29,10 +29,14 @@ VS Code (opcional)
 
 ## 💻 Demonstração e Como Rodar
 
+
 Código/Script SQL Relevante Comentado
 
+
 -- Criação da tabela de filmes
+
 CREATE TABLE filmes (
+ 
     id INT PRIMARY KEY,
     titulo VARCHAR(100),
     genero VARCHAR(50),
@@ -41,23 +45,40 @@ CREATE TABLE filmes (
     duracao INT
 );
 
+
 -- Inserção dos registros
+
 INSERT INTO filmes VALUES
+
 (1, 'Interestelar', 'Ficção', 2014, 9.5, 169),
+
 (2, 'Batman', 'Ação', 2022, 8.7, 176),
+
 (3, 'Avatar', 'Ficção', 2009, 8.0, 162),
+
 (4, 'Toy Story', 'Animação', 1995, 8.9, 81),
-(5, 'Vingadores', 'Ação', 2019, 9.2, 181),
+
+5, 'Vingadores', 'Ação', 2019, 9.2, 181),
+
 (6, 'Shrek', 'Comédia', 2001, 8.5, 90),
+
 (7, 'Titanic', 'Romance', 1997, 9.0, 194),
+
 (8, 'Coringa', 'Drama', 2019, 8.8, 122),
+
 (9, 'Matrix', 'Ficção', 1999, 9.3, 136),
+
 (10, 'Up', 'Animação', 2009, 8.4, 96);
 
+
 -- Consulta para exibir os 5 filmes com maiores notas
+
 SELECT *
+
 FROM filmes
+
 ORDER BY nota DESC
+
 LIMIT 5;
 
 ### Instruções para Executar
