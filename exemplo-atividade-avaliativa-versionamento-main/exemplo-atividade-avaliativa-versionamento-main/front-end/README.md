@@ -1,50 +1,108 @@
-# 💻 Desenvolvimento Front-end
+📝 Descrição do Projeto/Atividade
 
-## 📝 Descrição do Projeto/Atividade
-[Descreva brevemente o projeto prático que você escolheu colocar aqui. Ex: "Criação de um painel/dashboard web responsivo para gerenciamento de finanças pessoais, com gráficos interativos e controle de saldo."]
+Desenvolvimento de uma interface web interativa para cadastro de nomes, permitindo adicionar, listar, pesquisar, editar e excluir registros. A aplicação possui uma interface estilizada com CSS moderno e se comunica com um servidor Node.js para persistir os dados em um arquivo JSON.
 
----
-
-## 🧠 Reflexão de Aprendizado
-
-### 1. O que aprendi?
-[Substitua este texto por sua resposta. Explique em suas palavras os conceitos de front-end que você aprendeu com esta atividade, tais como: semântica HTML, estilização com CSS moderno (Grid/Flexbox), componentização, interatividade em JavaScript, manipulação do DOM ou o uso de bibliotecas/frameworks.]
-
-### 2. Para que serve (Por que aprendi)?
-[Substitua este texto por sua resposta. Explique por que é importante criar interfaces web bonitas, amigáveis, acessíveis e responsivas. Qual o impacto de um bom desenvolvimento front-end no produto final e na experiência do usuário?]
 
 ---
 
-## 🛠️ Tecnologias e Ferramentas Utilizadas
-*   HTML5 / CSS3 (Vanilla)
-*   JavaScript (ES6+)
-*   [Outra biblioteca ou ferramenta, ex: React, TailwindCSS, Chart.js]
+🧠 Reflexão de Aprendizado
+
+1. O que aprendi?
+
+Aprendi a estruturar páginas utilizando HTML5, aplicar estilos modernos com CSS3 utilizando Flexbox, efeitos visuais e responsividade básica. Também aprendi a manipular elementos da página com JavaScript, utilizar o DOM, criar funções para adicionar, editar, excluir e pesquisar dados, além de consumir rotas da API através do método fetch utilizando requisições HTTP como GET, POST, PUT e DELETE. Compreendi ainda a importância da separação entre front-end e back-end para a organização de aplicações web.
+
+2. Para que serve (Por que aprendi)?
+
+O desenvolvimento front-end é responsável pela interface com a qual o usuário interage. Criar páginas bonitas, intuitivas, acessíveis e responsivas melhora a experiência do usuário, facilita a navegação e torna a aplicação mais agradável de utilizar. Um bom front-end contribui para a qualidade do produto final, aumentando sua usabilidade, organização e eficiência.
+
 
 ---
 
-## 💻 Demonstração e Como Rodar
+🛠️ Tecnologias e Ferramentas Utilizadas
 
-### Código Relevante Comentado
-[Insira aqui um trecho de código CSS, JS ou HTML que foi crucial para a estrutura ou lógica do projeto, comentando as linhas mais importantes. Exemplo:]
-```javascript
-// Exemplo de código (substitua pelo seu):
-const updateUI = (transactions) => {
-  const listElement = document.getElementById('transaction-list');
-  listElement.innerHTML = ''; // Limpa a lista anterior
-  
-  transactions.forEach(transaction => {
-    const item = document.createElement('li');
-    item.classList.add(transaction.type === 'income' ? 'income-item' : 'expense-item');
-    item.innerHTML = `${transaction.name} <span>R$ ${transaction.amount.toFixed(2)}</span>`;
-    listElement.appendChild(item);
-  });
-};
-```
+HTML5
 
-### Instruções para Executar
-1. Se for um projeto estático em HTML/CSS/JS:
-   - Abra o arquivo `index.html` diretamente em seu navegador web, ou utilize a extensão **Live Server** no VS Code para rodar localmente.
-2. Se for um projeto utilizando Node.js/Vite/React:
-   - Instale as dependências: `npm install`
-   - Execute o servidor local: `npm run dev`
-   - Acesse o link fornecido no console (ex: `http://localhost:5173`).
+CSS3
+
+JavaScript (ES6+)
+
+Node.js
+
+API Fetch
+
+VS Code
+
+Arquivo JSON para armazenamento de dados
+
+
+
+---
+
+💻 Demonstração e Como Rodar
+
+Código Relevante Comentado
+
+// Função para salvar um nome
+function salvar() {
+    const input = document.getElementById('nome');
+    const nome = input.value;
+
+    fetch('/dados', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ nome })
+    })
+    .then(() => {
+        input.value = ''; // Limpa o campo após salvar
+        carregarDados(); // Atualiza a lista
+    });
+}
+
+// Função para carregar os dados salvos
+function carregarDados() {
+    fetch('/dados')
+        .then(res => res.json())
+        .then(dados => {
+            dadosGlobais = dados;
+            renderizar(dados);
+        });
+}
+
+Explicação:
+
+fetch('/dados') realiza uma requisição ao servidor.
+
+POST envia novos dados para serem armazenados.
+
+GET busca os dados já cadastrados.
+
+JSON.stringify() converte o objeto JavaScript em JSON.
+
+carregarDados() atualiza a lista automaticamente após alterações.
+
+renderizar() exibe os dados dinamicamente na página utilizando manipulação do DOM.
+
+
+Instruções para Executar
+
+1. Instale as dependências do projeto:
+
+
+
+npm install
+
+2. Execute o servidor:
+
+
+
+node server.js
+
+3. Abra o navegador e acesse:
+
+
+
+http://localhost:3000
+
+4. Utilize a interface para cadastrar nomes, pesquisar registros, editar informações e excluir itens da lista. Os dados serão armazenados no arquivo dados.json.
