@@ -1,56 +1,95 @@
-# 🤖 Inteligência Artificial (IA)
+arrega uma imagem, identifica automaticamente os rostos presentes utilizando um classificador pré-treinado e destaca as regiões detectadas com retângulos.
 
-## 📝 Descrição do Projeto/Atividade
-[Descreva brevemente o projeto prático que você escolheu colocar aqui. Ex: "Desenvolvimento de um classificador automático de sentimentos em avaliações de clientes utilizando a API do Google Gemini em Python."]
 
 ---
 
-## 🧠 Reflexão de Aprendizado
+🧠 Reflexão de Aprendizado
 
-### 1. O que aprendi?
-[Substitua este texto por sua resposta. Explique em suas palavras os conceitos de IA que você aprendeu com esta atividade, tais como: modelos de linguagem (LLMs), Engenharia de Prompts (Prompt Engineering), consumo de SDKs/APIs de IA, estruturação de dados de resposta (JSON Schema), ou conceitos de Machine Learning.]
+1. O que aprendi?
 
-### 2. Para que serve (Por que aprendi)?
-[Substitua este texto por sua resposta. Explique como a integração de IA pode agregar valor a sistemas de software tradicionais. Quais são os casos de uso práticos no mercado onde a inteligência artificial ajuda a automatizar tarefas complexas?]
+Aprendi conceitos introdutórios de Inteligência Artificial e Visão Computacional, utilizando modelos pré-treinados para reconhecimento de padrões em imagens. Também compreendi como manipular imagens com a biblioteca OpenCV, converter imagens para escala de cinza, utilizar classificadores Haar Cascade para detecção facial e desenhar marcações sobre objetos identificados. Além disso, pratiquei o uso do Python e do ambiente Google Colab para executar aplicações de IA.
 
----
+2. Para que serve (Por que aprendi)?
 
-## 🛠️ Tecnologias e Ferramentas Utilizadas
-*   Python / Node.js
-*   SDK do Google GenAI (Gemini API) ou OpenAI API
-*   [Outra biblioteca ou ferramenta, ex: python-dotenv, LangChain]
+A Inteligência Artificial pode automatizar tarefas que exigem análise de grandes volumes de dados, imagens ou textos. A detecção facial é utilizada em sistemas de segurança, autenticação biométrica, câmeras inteligentes, aplicativos de fotografia e monitoramento. Aprender esses conceitos permite desenvolver soluções capazes de reconhecer padrões e auxiliar na tomada de decisões de forma rápida e eficiente.
+
 
 ---
 
-## 💻 Demonstração e Como Rodar
+🛠️ Tecnologias e Ferramentas Utilizadas
 
-### Código Relevante Comentado
-[Insira aqui o trecho do código que faz a requisição para o modelo de IA e configura o prompt, comentando as partes fundamentais. Exemplo:]
-```python
-# Exemplo de código em Python usando a API do Gemini (substitua pelo seu):
-import google.generativeai as genai
-import os
+Python
 
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel('gemini-1.5-flash')
+OpenCV
 
-def analisar_sentimento(texto_cliente):
-    prompt = f"Analise o sentimento do seguinte texto. Responda apenas com: POSITIVO, NEGATIVO ou NEUTRO. Texto: {texto_cliente}"
-    response = model.generate_content(prompt)
-    return response.text.strip()
-```
+Google Colab
 
-### Instruções para Executar
-1. Certifique-se de ter o Python (ou Node.js) instalado em sua máquina.
-2. Instale as dependências necessárias:
-   ```bash
-   pip install google-generativeai python-dotenv
-   ```
-3. Crie um arquivo `.env` na raiz da pasta e adicione sua chave de API:
-   ```env
-   GEMINI_API_KEY=sua_chave_aqui
-   ```
-4. Execute o script principal:
-   ```bash
-   python app.py
-   ```
+Haar Cascade Classifier
+
+Biblioteca cv2
+
+
+
+---
+
+💻 Demonstração e Como Rodar
+
+Código Relevante Comentado
+
+import cv2
+from google.colab.patches import cv2_imshow
+
+# Carrega o modelo pré-treinado para detecção facial
+face_cascade = cv2.CascadeClassifier(
+    cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
+)
+
+# Lê a imagem
+img = cv2.imread('oi.jpg')
+
+# Converte para escala de cinza
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Detecta os rostos presentes na imagem
+faces = face_cascade.detectMultiScale(gray, 1.1, 4)
+
+# Desenha um retângulo ao redor de cada rosto encontrado
+for (x, y, w, h) in faces:
+    cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+
+# Exibe a imagem com as marcações
+cv2_imshow(img)
+
+Explicação:
+
+CascadeClassifier() carrega um modelo treinado para detectar rostos.
+
+imread() abre a imagem que será analisada.
+
+cvtColor() converte a imagem para tons de cinza, facilitando a detecção.
+
+detectMultiScale() identifica as regiões onde há rostos.
+
+rectangle() desenha um retângulo ao redor dos rostos encontrados.
+
+cv2_imshow() exibe o resultado diretamente no Google Colab.
+
+
+Instruções para Executar
+
+1. Instale a biblioteca OpenCV:
+
+
+
+pip install opencv-python
+
+2. Coloque a imagem oi.jpg na mesma pasta do script ou faça upload no Google Colab.
+
+
+3. Execute o código Python:
+
+
+
+python app.py
+
+4. O programa analisará a imagem e exibirá os rostos detectados destacados por retângulos azuis.
