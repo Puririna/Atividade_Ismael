@@ -1,54 +1,98 @@
-# 📱 Desenvolvimento Mobile
+📝 Descrição do Projeto/Atividade
 
-## 📝 Descrição do Projeto/Atividade
-[Descreva brevemente o projeto prático que você escolheu colocar aqui. Ex: "Desenvolvimento de um aplicativo de previsão do tempo em React Native e TypeScript, integrado com a API OpenWeatherMap."]
+Desenvolvimento de um aplicativo simples em React Native que realiza a soma automática de dois números pré-definidos. A aplicação permite ao usuário executar a operação matemática por meio de um botão e limpar o resultado utilizando outro botão. O projeto foi utilizado para praticar conceitos básicos de desenvolvimento mobile, gerenciamento de estados e estilização de interfaces.
 
----
-
-## 🧠 Reflexão de Aprendizado
-
-### 1. O que aprendi?
-[Substitua este texto por sua resposta. Explique em suas palavras os conceitos teóricos e práticos de desenvolvimento mobile que você aprendeu com esta atividade, tais como: componentes, Hooks do React (useState, useEffect), tratamento de estados assíncronos, consumo de APIs, estilização, etc.]
-
-### 2. Para que serve (Por que aprendi)?
-[Substitua este texto por sua resposta. Explique qual a relevância de aprender a desenvolver aplicativos móveis nativos/híbridos com React Native para o mercado de trabalho atual. Qual problema real esta competência resolve no dia a dia corporativo?]
 
 ---
 
-## 🛠️ Tecnologias e Ferramentas Utilizadas
-*   React Native / Expo
-*   TypeScript
-*   [Outra biblioteca, ex: Axios, React Navigation, React Native Vector Icons]
+🧠 Reflexão de Aprendizado
+
+1. O que aprendi?
+
+Aprendi a desenvolver interfaces móveis utilizando React Native, criando componentes como View, Text e TouchableOpacity. Também utilizei o Hook useState para armazenar e atualizar o estado da aplicação em tempo real. Compreendi como criar funções para manipular dados, associar eventos aos botões por meio do onPress e estilizar os componentes utilizando StyleSheet. Além disso, pratiquei conceitos fundamentais de renderização dinâmica e atualização automática da interface quando ocorre uma alteração no estado.
+
+2. Para que serve (Por que aprendi)?
+
+O desenvolvimento mobile é importante porque grande parte dos usuários acessa serviços por meio de smartphones. Aprender React Native permite criar aplicativos para Android e iOS utilizando uma única base de código, reduzindo tempo e custos de desenvolvimento. Essa competência é bastante valorizada no mercado de trabalho, pois possibilita desenvolver aplicações modernas, interativas e eficientes para atender às necessidades de empresas e usuários.
+
 
 ---
 
-## 💻 Demonstração e Como Rodar
+🛠️ Tecnologias e Ferramentas Utilizadas
 
-### Código Relevante Comentado
-[Insira aqui um trecho de código TypeScript/React Native que foi crucial para o projeto, comentando as linhas mais importantes para demonstrar seu entendimento. Exemplo:]
-```tsx
-// Exemplo de código (substitua pelo seu):
-const fetchWeatherData = async (city: string) => {
-  try {
-    setLoading(true);
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=SUA_API_KEY`);
-    const data = await response.json();
-    setWeather(data);
-  } catch (err) {
-    setError('Não foi possível carregar os dados de clima.');
-  } finally {
-    setLoading(false);
-  }
-};
-```
+React Native
 
-### Instruções para Executar
-1. Instale as dependências na pasta do projeto:
-   ```bash
-   npm install
-   ```
-2. Inicialize o servidor de desenvolvimento do Expo:
-   ```bash
-   npx expo start
-   ```
-3. Use o aplicativo Expo Go em seu dispositivo móvel ou um emulador Android/iOS para visualizar.
+TypeScript
+
+Expo
+
+React Hooks (useState)
+
+VS Code
+
+
+
+---
+
+💻 Demonstração e Como Rodar
+
+Código Relevante Comentado
+
+import React, { useState } from 'react';
+
+export default function App() {
+
+  // Estado responsável por armazenar o resultado
+  const [resultado, setResultado] = useState(0);
+
+  // Realiza a soma dos números
+  const realizarSoma = () => {
+    const n1 = 10;
+    const n2 = 5;
+
+    const somaTotal = n1 + n2;
+
+    // Atualiza o estado e a interface automaticamente
+    setResultado(somaTotal);
+  };
+
+  // Limpa o resultado
+  const resetarSoma = () => {
+    setResultado(0);
+  };
+
+}
+
+Explicação:
+
+useState(0) cria uma variável de estado iniciando com valor zero.
+
+setResultado() atualiza o valor armazenado no estado.
+
+realizarSoma() calcula a soma dos números 10 e 5.
+
+resetarSoma() retorna o resultado para zero.
+
+TouchableOpacity permite criar botões interativos.
+
+StyleSheet.create() organiza os estilos da aplicação.
+
+
+Instruções para Executar
+
+1. Instale as dependências do projeto:
+
+
+
+npm install
+
+2. Inicie o servidor do Expo:
+
+
+
+npx expo start
+
+3. Abra o aplicativo Expo Go no celular ou utilize um emulador Android/iOS.
+
+
+4. Escaneie o QR Code exibido no terminal ou no navegador para visualizar o aplicativo em execução.
