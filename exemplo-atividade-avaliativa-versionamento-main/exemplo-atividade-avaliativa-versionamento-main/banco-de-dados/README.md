@@ -17,8 +17,11 @@ Os bancos de dados são essenciais para armazenar, organizar e consultar informa
 
 ## 🛠️ Tecnologias e Ferramentas Utilizadas
 MySQL
+
 SQL
+
 DBeaver (ou outro cliente SQL utilizado)
+
 VS Code (opcional)
 
 
