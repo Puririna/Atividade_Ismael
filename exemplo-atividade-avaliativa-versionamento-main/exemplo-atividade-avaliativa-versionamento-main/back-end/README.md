@@ -1,44 +1,47 @@
 # ⚙️ Desenvolvimento Back-end
 
 ## 📝 Descrição do Projeto/Atividade
-[Descreva brevemente o projeto prático que você escolheu colocar aqui. Ex: "Desenvolvimento de uma API RESTful para cadastro de usuários e controle de acessos, com criptografia de senhas (bcrypt) e geração de tokens JWT."]
+Desenvolvimento de um servidor simples utilizando Node.js. O servidor responde às requisições HTTP, disponibiliza uma página HTML e permite a interação do usuário por meio de um botão que executa uma função JavaScript exibindo uma mensagem na tela.
 
 ---
 
 ## 🧠 Reflexão de Aprendizado
 
 ### 1. O que aprendi?
-[Substitua este texto por sua resposta. Explique em suas palavras os conceitos de back-end que você aprendeu com esta atividade, tais como: lógica de servidor, rotas HTTP (GET, POST, PUT, DELETE), tratamento de requisições e respostas, uso de middlewares, segurança/criptografia, e integração com banco de dados.]
+Aprendi os conceitos básicos de desenvolvimento back-end utilizando Node.js, como criar um servidor HTTP, definir respostas para as requisições dos usuários e configurar uma porta para execução do servidor. Também compreendi a diferença entre front-end e back-end, o funcionamento das requisições e respostas HTTP e como integrar uma página HTML ao servidor. Além disso, utilizei o VS Code, o terminal do Node.js e o arquivo package.json para organizar o projeto.
 
 ### 2. Para que serve (Por que aprendi)?
-[Substitua este texto por sua resposta. Explique qual o papel da lógica de servidor e das APIs em um ecossistema de software. Por que o desenvolvedor precisa garantir a integridade das regras de negócio e a segurança dos dados no back-end?]
+A lógica de servidor é responsável por processar informações, aplicar regras de negócio e enviar respostas aos usuários. As APIs e servidores permitem a comunicação entre aplicações, sites e bancos de dados. O desenvolvedor precisa garantir a integridade das informações e a segurança dos dados para evitar erros, perdas de informações e acessos indevidos.
 
 ---
 
 ## 🛠️ Tecnologias e Ferramentas Utilizadas
-*   Node.js
-*   Express
-*   TypeScript
-*   [Outra biblioteca ou ferramenta, ex: JWT, bcryptjs, Prisma, SQLite]
+Node.js
+JavaScript
+HTML
+VS Code
+Terminal PowerShell
+Package.json
 
 ---
 
 ## 💻 Demonstração e Como Rodar
 
 ### Código Relevante Comentado
-[Insira aqui um trecho de código do servidor ou rotas que foi crucial para a lógica da aplicação, comentando as linhas mais importantes. Exemplo:]
-```javascript
-// Exemplo de código Express (substitua pelo seu):
-app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-  const user = await database.findUserByEmail(email);
-  
-  if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
-    return res.status(401).json({ error: 'Credenciais inválidas' }); // Erro de autenticação
-  }
-  
-  const token = jwt.sign({ userId: user.id }, SECRET_KEY, { expiresIn: '1h' });
-  return res.json({ token }); // Retorna o token para o cliente
+Código Relevante Comentado
+
+// Cria um servidor HTTP
+const server = http.createServer((req, res) => {
+
+    // Caso a rota não exista
+    res.writeHead(404);
+    res.end('Página não encontrada');
+
+});
+
+// Inicia o servidor na porta 3000
+server.listen(3000, () => {
+    console.log('Servidor rodando em http://localhost:3000');
 });
 ```
 
@@ -55,3 +58,14 @@ app.post('/login', async (req, res) => {
    npm run dev
    ```
 4. Teste as rotas utilizando uma ferramenta de requisições HTTP (como Postman, Insomnia ou a extensão Thunder Client do VS Code).
+
+Instruções para Executar
+
+1. Abra o terminal na pasta do projeto.
+2. Instale as dependências (caso existam):
+npm install
+3. Execute o servidor:
+node server.js
+4. Abra o navegador e acesse:
+http://localhost:3000
+5. A página exibirá uma mensagem de servidor funcionando e um botão que, ao ser clicado, mostrará um alerta com o texto "Funcionou!".
