@@ -1,45 +1,76 @@
-# 🔧 Versionamento e Gestão de Código
+📝 Descrição do Projeto/Atividade
 
-## 📝 Descrição do Projeto/Atividade
-Este projeto consiste na própria **gestão, organização e controle de versão deste Portfólio**. Nele, apliquei conceitos avançados de controle de versão exigidos no mercado de trabalho para garantir a rastreabilidade e legibilidade do histórico de desenvolvimento do software.
+Desenvolvimento de um aplicativo simples utilizando React Native e TypeScript com o ambiente Expo. O projeto teve como objetivo praticar a criação de interfaces móveis, manipulação de estados, eventos de interação e estilização de componentes.
 
----
-
-## 🧠 Reflexão de Aprendizado
-
-### 1. O que aprendi?
-[Substitua este texto por sua resposta. Explique em suas palavras o que é e para que serve o padrão adotado neste projeto:]
-*   **Conventional Commits (Commits Convencionais):** [O que é e quais regras principais você seguiu para escrever mensagens de commits?]
-
-### 2. Para que serve (Por que aprendi)?
-[Substitua este texto por sua resposta. Por que grandes empresas e projetos open-source utilizam essa convenção de histórico? Como isso ajuda na colaboração de grandes equipes e no rastreamento de mudanças e bugs?]
 
 ---
 
-## 💻 Demonstração das Práticas de Versionamento
+🧠 Reflexão de Aprendizado
 
-### Histórico de Commits Semânticos
-[Insira abaixo exemplos reais de mensagens de commit que você efetuou durante a construção deste portfólio. Indique o tipo e o escopo de cada um.]
+1. O que aprendi?
 
-*   `feat(mobile): ...` (Explicar o commit)
-*   `docs(readme): ...` (Explicar o commit)
-*   `fix(backend): ...` (Explicar o commit)
-*   `chore: ...` (Explicar o commit)
+Aprendi a desenvolver aplicações móveis utilizando React Native, criando componentes de interface, utilizando o Hook useState para gerenciar estados, tratando eventos de clique e estilizando telas com StyleSheet. Também compreendi a estrutura básica de um projeto Expo e como visualizar a aplicação em dispositivos móveis.
+
+2. Para que serve (Por que aprendi?)
+
+O desenvolvimento mobile é importante porque permite criar aplicativos para smartphones de forma eficiente. O React Native possibilita desenvolver aplicações para Android e iOS utilizando uma única base de código, reduzindo tempo de desenvolvimento e facilitando a manutenção dos projetos.
+
 
 ---
 
-## 🛠️ Comandos Git Utilizados
-Abaixo estão os comandos Git executados para manter e estruturar este repositório:
+🛠️ Tecnologias e Ferramentas Utilizadas
 
-*   **Para criar e comitar no padrão convencional:**
-    ```bash
-    # Registrar alterações
-    git add .
-    
-    # Commitar seguindo o padrão convencional
-    git commit -m "docs(readme): update mobile documentation details"
-    ```
-*   **Para enviar as alterações ao repositório remoto (GitHub):**
-    ```bash
-    git push origin main
-    ```
+React Native
+
+TypeScript
+
+Expo
+
+React Hooks (useState)
+
+VS Code
+
+
+
+---
+
+💻 Demonstração e Como Rodar
+
+Código Relevante Comentado
+
+const [resultado, setResultado] = useState(0);
+
+// Atualiza o estado com a soma dos valores
+const realizarSoma = () => {
+  setResultado(10 + 5);
+};
+
+// Reinicia o resultado
+const resetarSoma = () => {
+  setResultado(0);
+};
+
+Explicação:
+
+useState() armazena valores que podem mudar durante a execução do aplicativo.
+
+setResultado() atualiza o estado e a interface automaticamente.
+
+As funções são acionadas pelos botões utilizando o evento onPress.
+
+
+Instruções para Executar
+
+1. Instale as dependências:
+
+
+
+npm install
+
+2. Inicie o projeto:
+
+
+
+npx expo start
+
+3. Abra o aplicativo Expo Go ou utilize um emulador Android/iOS para visualizar a aplicação.
